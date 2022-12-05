@@ -4,14 +4,13 @@ def main():
     sum_fully_contained = 0
     sum_overlaps = 0
     
-    file = open("input.txt", "r")
-    for line in file:
-        nums = list(map(int, re.split("[-,]", line)))
-        if fully_contained(nums):
-            sum_fully_contained += 1
-        if overlap(nums):
-            sum_overlaps += 1
-    file.close()
+    with open("input.txt") as file:
+        for line in file:
+            nums = list(map(int, re.split("[-,]", line)))
+            if fully_contained(nums):
+                sum_fully_contained += 1
+            if overlap(nums):
+                sum_overlaps += 1
     
     print("There are", sum_fully_contained, "ranges that fully contain another")
     print("There are", sum_overlaps, "ranges that overlap")
